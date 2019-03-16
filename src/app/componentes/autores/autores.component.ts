@@ -17,6 +17,9 @@ export class AutoresComponent implements OnInit {
 
   // public autores: Autor[] = autores;
   public autores: Autor[] = [];
+
+  public todosautores: Autor[] = [];
+
   public estados:any[]=estados;
   public formAutor: FormGroup;
   validForm: boolean = true;
@@ -62,7 +65,26 @@ export class AutoresComponent implements OnInit {
 
     this.formBuscar.get('buscar').valueChanges.subscribe((respuesta)=>
     {
-      console.log(respuesta);
+      //console.log(respuesta);
+      this.autorService.buscar(respuesta).subscribe((res)=>
+      {
+        console.log(respuesta);
+
+        if (respuesta=="")
+        {
+          this.autores=this.todosautores;
+        }
+        else
+        {
+          this.autores=[];
+          for (let attr in res)
+          {
+            let autor: Autor=res[attr];
+            autor.id=attr;
+            this.autores.push(autor);
+          }
+        }        
+      })
     }, (error)=>
     {
       
@@ -85,6 +107,7 @@ export class AutoresComponent implements OnInit {
           let autor: Autor=respuesta[attr];
           autor.id=attr;
           this.autores.push(autor);
+          this.todosautores.push(autor);
         }
 
       });

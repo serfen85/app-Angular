@@ -13,6 +13,11 @@ export class AutoresService {
 
   }
 
+  public buscar(nombre:string):Observable<any>
+  {
+    let endpoint:string= this.url + '.json?orderBy="nombre"&equalTo="' + nombre + '"';
+    return this.http.get<any>(endpoint);
+  }
 
   public getAutores(): Observable<any> {
     let endpoint:string= this.url + '.json';

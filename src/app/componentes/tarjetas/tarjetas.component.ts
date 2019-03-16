@@ -13,7 +13,7 @@ export class TarjetasComponent implements OnInit {
  // public lista: Cuento[];
 
 
-  constructor(private ct: CuentoTarjetaService) {
+  constructor(public ct: CuentoTarjetaService) {
 
     //this.lista= this.ct.getList();
   }

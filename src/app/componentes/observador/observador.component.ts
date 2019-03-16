@@ -11,11 +11,11 @@ export class ObservadorComponent implements OnInit {
 
   private data$: Observable < number > ;
 
-  private loading: boolean= true;
+  public loading: boolean= true;
 
 	 private lista$: Observable < number[]> ;
 
-	private lista:  number[];
+	public lista:  number[];
 
 
   constructor() {

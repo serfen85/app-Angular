@@ -13,7 +13,7 @@ export class CuentoTarjetaComponent implements OnInit {
 @Input('cuento') cuento:Cuento;
 @Input('index') index:number;
 
-  constructor(private ct: CuentoTarjetaService) { }
+  constructor(public ct: CuentoTarjetaService) { }
 
   ngOnInit() {
     this.ct.status = "Soy Hijo";

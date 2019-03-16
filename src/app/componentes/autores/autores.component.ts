@@ -20,6 +20,10 @@ export class AutoresComponent implements OnInit {
   public estados:any[]=estados;
   public formAutor: FormGroup;
   validForm: boolean = true;
+  public formBuscar:FormGroup= new FormGroup(
+    {
+      buscar: new FormControl()
+    });
 
 
   public paises: any[] = [
@@ -55,6 +59,19 @@ export class AutoresComponent implements OnInit {
   ngOnInit() {
       
     this.getUsuarios();
+
+    this.formBuscar.get('buscar').valueChanges.subscribe((respuesta)=>
+    {
+      console.log(respuesta);
+    }, (error)=>
+    {
+      
+    },
+      ()=>
+    {
+      console.log("completado");
+    })
+
   }
 
   getUsuarios()

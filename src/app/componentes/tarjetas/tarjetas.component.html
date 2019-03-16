@@ -1,0 +1,19 @@
+<div class="container">
+  <nav class="navbar navbar-light bg-light">
+    <div class="form-inline">
+      <button class="btn btn-outline-success" type="button" (click)="agregar()">Agregar</button>
+      <button class="btn btn-sm btn-outline-secondary" type="button"  (click)="eliminar()">Eliminar</button>
+    </div>
+  </nav>
+  <div class="row">
+    <!-- <app-cuento-tarjeta *ngFor="let item of ct.getList()"></app-cuento-tarjeta> -->
+    
+    <app-cuento-tarjeta *ngFor="let item of ct.lista; let i=index" [cuento]="item"  [index]="i" ></app-cuento-tarjeta>
+  </div>
+</div>
+
+
+La lista del servicio
+
+
+{{ct.lista | json}}

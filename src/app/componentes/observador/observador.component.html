@@ -1,0 +1,23 @@
+<!-- <p > 
+  {{ data$ | async }}
+</p> -->
+
+<!-- 
+<ul class="list-group" >
+    <li class="list-group-item" *ngFor="let item of lista$ | async">{{ item }}</li>
+     <li class="list-group-item">Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus asperiores excepturi illo tempore ea libero fuga. Accusamus hic sed temporibus harum accusantium doloribus. Similique illum quas ea eius possimus dolorem voluptatum architecto, nihil saepe qui enim magni quae! Earum totam aliquid illum repellat perferendis accusamus cumque aliquam doloremque doloribus? Mollitia sunt nam molestias repellendus, ullam eligendi laboriosam necessitatibus, sit ipsam hic, est accusantium vero voluptatem. Fugiat aspernatur temporibus dolorem qui libero magni. Earum dolore deleniti quasi, tempore at id molestiae labore asperiores reiciendis quaerat sed sit minima quisquam exercitationem fuga incidunt nisi repudiandae corrupti! Eos eius unde quasi eveniet alias.</li> 
+  </ul> -->
+
+  <div  *ngIf="loading"  class="spinner-border" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+
+
+  
+<ul *ngIf="lista" class="list-group" >
+    <li class="list-group-item" *ngFor="let item of lista">{{ item }}</li>
+   </ul>
+
+
+
+    

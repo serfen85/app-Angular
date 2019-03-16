@@ -1,0 +1,75 @@
+
+
+<div class="card text-center">
+  <!-- <encabezado tituloEncabezado="Cuentos ninguno"></encabezado> -->
+  <encabezado [tituloEncabezado]="titulo"></encabezado>
+
+  
+  <!-- <cuerpo [aliascuentos]="listadecuentos" (reseniaLeida)="calculaPalabras($event)" 
+    [clicks]="numClicks" (clicksOut)="numClicks=$event" ></cuerpo> -->
+
+    <cuerpo [aliascuentos]="listadecuentoscategoria" (reseniaLeida)="calculaPalabras($event)" 
+    [clicks]="numClicks" (clicksOut)="numClicks=$event" ></cuerpo>
+
+    
+
+
+  <pie [leidas]="numPalabras"></pie>
+
+  <ul>
+      <li *ngFor="let item of listadecuentoscategoria">
+        <p>{{item.titulo}}</p>
+      </li>
+    </ul>
+
+    {{listadecuentoscategoria | json}}
+
+  <!-- <ul>
+    <li *ngFor="let item of listadecuentos"> {{item | json}}</li>
+  </ul> -->
+<!-- 
+
+  <ul>
+    <li *ngFor="let item of listadecuentos">
+      <p>{{item.titulo}}</p>
+    </li>
+  </ul>
+
+  <ul>
+    <li *ngFor="let attr of atributos">
+      <p>{{diccionario[attr]}}</p>
+    </li>
+  </ul> -->
+
+<!-- 
+  <ul>
+    <li *ngFor="let atr of atributos">
+      <p>{{atr | translation : 'EN' }}</p>
+    </li>
+  </ul> -->
+
+<!--   
+  <ul>
+      <li *ngFor="let atr of atributos">
+        <p>{{atr | translation : lan }}</p>
+      </li>
+    </ul> -->
+
+  <!-- 
+  {{atributos | json}} -->
+
+  <!-- <ul>
+    <li *ngFor="let item of listadecuentos">
+      <p>{{item.titulo}}</p>
+    </li>
+  </ul> -->
+
+
+
+  <!-- <table>
+   <th *ngFor="let item of listadecuentos"><p>{{item.titulo}}</p></th>
+   <th *ngFor="let item in listadecuentos"><p>{{item}}</p></th>
+ </table> -->
+
+</div>
+Cantidad de clicks {{numClicks}}

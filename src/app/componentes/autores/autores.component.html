@@ -1,0 +1,115 @@
+<div class="container">
+    <div class="input-group mb-3" style="margin-top:20px">
+        <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2">
+        <div class="input-group-append">
+          <span class="input-group-text" id="basic-addon2">Buscar</span>
+        </div>
+      </div>
+  <div class="btn-toolbar">
+    <button class="btn btn-primary" (click)="openModal(template)">Nuevo Autor</button>
+  </div>
+  <div class="well">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Nombre</th>
+          <th>Apellido</th>
+          <th>Pais</th>
+          <th>Estado</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let autor of autores; let i=index">
+          <td>{{autor.id}}</td>
+          <td>{{autor.nombre}}</td>
+          <td>{{autor.apellido}}</td>
+          <td>{{autor.pais}}</td>
+          <th>{{autor.estado}}</th>
+          <td>
+              <a  class="btn btn-primary" [routerLink]="autor.id">Detalle</a>
+            <button type="submit" class="btn btn-primary" (click)="EditarAutor(autor.id,template)">Editar</button>
+            <button type="submit" class="btn btn-danger" (click)="alertaborrado(autor.id,alert,i)">Borrar</button>
+          </td>
+        </tr>
+
+      </tbody>
+    </table>
+  </div>
+  <router-outlet></router-outlet>
+</div>
+
+<!-- SON LOS MODULOS PARA CREAR, EDITAR -->
+<ng-template #template>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Nuevo Autor</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body" [formGroup]="formAutor">
+    {{formAutor.value | json}}
+
+    <!-- <div class="alert alert-primary" role="alert" *ngIf="!formAutor.valid"> -->
+    <div class="alert alert-danger" role="alert" *ngIf="!validForm">
+      El formulario no es válido
+    </div>
+    <div class="form-group">
+      <label for="Nombre">Nombre</label>
+      <input type="text" class="form-control" placeholder="Nombre" formControlName="nombre">
+      <!-- #Nombre -->
+      <!-- <small id="emailHelp" class="form-text text-muted alertRed" *ngIf="!formAutor.get('nombre').valid">
+        El Nombre es obligatorio.</small> -->
+      <small id="emailHelp" class="form-text text-muted alertRed" *ngIf="formAutor.get('nombre').errors?.required">
+        El Nombre es obligatorio.</small>
+      <small id="emailHelp" class="form-text text-muted alertRed" *ngIf="formAutor.get('nombre').errors?.maxlength">
+        Solo se permitan ciertos caracteres.</small>
+
+      {{formAutor.get('nombre').errors | json}}
+    </div>
+    <div class="form-group">
+      <label for="Apellido">Apellido</label>
+      <input type="text" class="form-control" placeholder="Apellido" formControlName="apellido">
+    </div>
+    <div class="form-group">
+      <label for="lectura">lectura</label>
+      <input type="text" class="form-control" placeholder="lectura" formControlName="lectura" readonly=true>
+    </div>
+
+    <div class="form-group">
+      <label for="pais">Pais</label>
+      <select formControlName="pais" class="form-control">
+        <option *ngFor="let pais of paises" [ngValue]="pais.codigo">{{pais.nombre}}</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="estado">Estado</label>
+      <input type="text" class="form-control" formControlName="estado" [typeahead]="estados"  typeaheadOptionField="nombre">
+    </div>
+
+    <div class="form-group form-check">
+      <input type="checkbox" class="form-check-input" id="Vigente" formControlName="vigente">
+      <label class="form-check-label" for="Vigente">¿Es vigente?</label>
+    </div>
+    <button type="submit" class="btn btn-primary" (click)="Guardar()">Guardar</button>
+    <button type="submit" class="btn btn-danger" (click)="resetearAutor()">Limpiar</button>
+  </div>
+</ng-template>
+
+
+
+
+<ng-template #alert>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Estás Seguro de Eliminar?</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+
+    <button type="submit" class="btn btn-primary" (click)="AceptarBorrado()">Aceptar</button>
+    <button type="submit" class="btn btn-danger" (click)="RechazarBorrado()">Rechazar</button>
+  </div>
+</ng-template>

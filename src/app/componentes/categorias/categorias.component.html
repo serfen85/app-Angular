@@ -1,0 +1,14 @@
+<div class="container">
+  <div class="row">
+    <div class="col-3">
+      <ul class="list-group" >
+        <li  *ngFor="let item of listadecategorias" class="list-group-item" (click)="onClick(item.id)" >{{item.nombre}}</li>
+      </ul>
+
+    </div>
+    <div class="col">
+      <card [categoriaid]="idcategoria"></card>>
+    </div>
+  </div>
+</div>
+

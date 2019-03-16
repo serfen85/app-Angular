@@ -1,0 +1,25 @@
+<div class="card-body">
+  <h5  class="card-title" [ngClass]="{'tituloVerde':contador==3}" > titulo {{cuentoActual.titulo}}</h5>
+  <h5  class="card-title" [ngClass]="{'tituloVerde':esTercerCuento(cuentoActual.titulo)}" > titulo2 {{cuentoActual.titulo}}</h5>
+ 
+  <p class="card-title">reseña {{cuentoActual.resenia}}</p>
+  <!-- {{AA | json}} -->
+  <button  class="btn btn-primary"  (click)="onClick()" >Siguiente</button>
+  <p *ngIf="contador== 2"> Estas en el cuento 3  </p>
+  <p *ngIf="cuentoActual.titulo== 'titulo 1'"> Estas en el cuento 1  </p>
+
+  <p *ngIf="esPrimerCuento(cuentoActual.titulo)"  > Estas en el cuento 222  </p>
+
+
+<a [ngStyle]="estilo" routerLink="/autores/{{cuentoActual.autor_id}}" > Autor = {{cuentoActual.autor}}   </a>
+
+<div [ngSwitch]="contador">
+  <p *ngSwitchCase="0">Es el primer cuento</p>
+  <p *ngSwitchCase="1">Es el segundo cuento</p>
+  <p *ngSwitchCase="2">Es el tercero cuento</p>
+  <p *ngSwitchCase="3">Es el cuarto cuento</p>
+
+</div>
+
+
+</div>

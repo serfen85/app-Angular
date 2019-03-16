@@ -6,7 +6,7 @@
         </div>
       </div>
   <div class="btn-toolbar">
-    <button class="btn btn-primary" (click)="openModal(template)">Nuevo Autor</button>
+    <button class="btn btn-primary" (click)="openModal(template)"> Agregar Nuevo Autor</button>
   </div>
   <div class="well">
     <table class="table">
@@ -28,7 +28,7 @@
           <th>{{autor.estado}}</th>
           <td>
               <a  class="btn btn-primary" [routerLink]="autor.id">Detalle</a>
-            <button type="submit" class="btn btn-primary" (click)="EditarAutor(autor.id,template)">Editar</button>
+            <button type="submit" class="btn btn-primary" (click)="EditarAutor(autor.id,template)">Editar Autor</button>
             <button type="submit" class="btn btn-danger" (click)="alertaborrado(autor.id,alert,i)">Borrar</button>
           </td>
         </tr>

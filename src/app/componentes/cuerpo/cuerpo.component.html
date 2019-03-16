@@ -2,10 +2,10 @@
   <h5  class="card-title" [ngClass]="{'tituloVerde':contador==3}" > titulo {{cuentoActual.titulo}}</h5>
   <h5  class="card-title" [ngClass]="{'tituloVerde':esTercerCuento(cuentoActual.titulo)}" > titulo2 {{cuentoActual.titulo}}</h5>
  
-  <p class="card-title">reseña {{cuentoActual.resenia}}</p>
+  <p class="card-title">Reseña {{cuentoActual.resenia}}</p>
   <!-- {{AA | json}} -->
   <button  class="btn btn-primary"  (click)="onClick()" >Siguiente</button>
-  <p *ngIf="contador== 2"> Estas en el cuento 3  </p>
+  <p *ngIf="contador== 2"> Estas en el Cuento 3  </p>
   <p *ngIf="cuentoActual.titulo== 'titulo 1'"> Estas en el cuento 1  </p>
 
   <p *ngIf="esPrimerCuento(cuentoActual.titulo)"  > Estas en el cuento 222  </p>
